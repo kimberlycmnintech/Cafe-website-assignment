@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart - Solace Cafe</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #fff;
+      min-height: 100vh;
+      padding: 20px;
+      color: #1a3263;
+    }
+    .back-arrow {
+      font-size: 28px;
+      color: #1a3263;
+      cursor: pointer;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+    }
+    .left-section {
+      flex: 1;
+      background: #fafbfc;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    .page-title {
+      font-size: 2.5rem;
+      color: #1a3263;
+      font-weight: 600;
+      margin-bottom: 40px;
+      letter-spacing: -1px;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+      background: #fff;
+      border-radius: 30px;
+      box-shadow: 0 2px 10px #0001;
+      padding: 20px 30px;
+      position: relative;
+      max-width: 500px;
+    }
+    .quantity-control {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #1a3263;
+      border-radius: 20px;
+      padding: 15px 10px;
+      min-width: 60px;
+      user-select: none;
+    }
+    .quantity-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 5px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+    }
+    .quantity-btn:hover { opacity: 0.8; }
+    .quantity-number {
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .food-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
+      box-shadow: 0 2px 8px #0002;
+      background: #fff;
+    }
+    .food-details {
+      flex: 1;
+    }
+    .food-name {
+      font-size: 1.3rem;
+      color: #1a3263;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .food-price {
+      font-size: 1.1rem;
+      color: #1a3263;
+      font-weight: 600;
+    }
+    .remove-btn {
+      background: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      color: #e74c3c;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px #0002;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      position: absolute;
+      top: 18px;
+      right: 18px;
+    }
+    .remove-btn:hover { background: #ffeaea; }
+    .right-section {
+      width: 350px;
+      background: #3b5ba9;
+      border-radius: 25px;
+      padding: 30px;
+      color: #fff;
+      box-shadow: 0 8px 30px rgba(74, 144, 226, 0.15);
+    }
+    .delivery-options {
+      display: flex;
+      margin-bottom: 25px;
+    }
+    .delivery-btn {
+      flex: 1;
+      padding: 12px 0;
+      border: none;
+      border-radius: 20px;
+      font-size: 1.3rem;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      background: #274080;
+      color: #fff;
+      margin-right: 10px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .delivery-btn:last-child { margin-right: 0; }
+    .delivery-btn.active {
+      background: #fff;
+      color: #274080;
+    }
+    .location-section { margin-bottom: 30px; }
+    .location-input {
+      width: 100%;
+      padding: 0;
+      border: none;
+      border-radius: 20px;
+      font-size: 1.1rem;
+      background: #fff;
+      color: #274080;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      margin: 0;
+      height: 48px;
+      overflow: hidden;
+    }
+    .location-input input {
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 1.1rem;
+      color: #274080;
+      width: 100%;
+      padding: 13px 0 13px 0;
+      box-sizing: border-box;
+      height: 48px;
+      border-radius: 0 20px 20px 0;
+      margin: 0;
+      display: block;
+    }
+    .location-icon {
+      color: #e17055;
+      margin-left: 16px;
+      margin-right: 10px;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .payment-details { margin-bottom: 30px; }
+    .payment-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .payment-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+    .payment-row.total {
+      border-top: 2px solid #fff5;
+      padding-top: 15px;
+      margin-top: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .checkout-btn {
+      width: 100%;
+      padding: 15px;
+      background: #11224d;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-size: 1.5rem;
+      font-family: inherit;
+      font-weight: 500;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .checkout-btn:hover {
+      background: #f7c873;
+      color: #002366;
+    }
+    .empty-cart {
+      text-align: center;
+      color: #888;
+      margin: 2rem 0;
+      font-size: 1.2rem;
+    }
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .right-section { width: 100%; }
+      .left-section { padding: 20px; }
+      .page-title { font-size: 2rem; }
+      .cart-item { gap: 15px; }
+      .food-image { width: 80px; height: 80px; }
+      .delivery-options { flex-direction: column; gap: 10px; }
+      .delivery-btn:not(.active) { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="back-arrow" onclick="window.location.href='index.html'">←</div>
+  <div class="container">
+    <div class="left-section">
+      <h1 class="page-title">Your Cart</h1>
+      <div id="cart-items"></div>
+      <div class="empty-cart" id="empty-cart" style="display:none;">Your cart is empty.</div>
+    </div>
+    <div class="right-section">
+      <div class="delivery-options">
+        <button class="delivery-btn active" id="deliveryBtn" onclick="selectDelivery()">Delivery</button>
+        <button class="delivery-btn" id="dineInBtn" onclick="selectDineIn()">Dine In</button>
+      </div>
+      <div class="location-section">
+        <div class="location-input">
+          <span class="location-icon">📍</span>
+          <input
+            type="text"
+            id="locationField"
+            placeholder="Add Location"
+            style="border:none;outline:none;background:transparent;font-size:1.1rem;color:#274080;width:100%;"
+          />
+        </div>
+      </div>
+      <div class="payment-details">
+        <div class="payment-title">Payment details:</div>
+        <div class="payment-row">
+          <span>Cart Total</span>
+          <span>RM <span id="cartTotal">0</span></span>
+        </div>
+        <div class="payment-row">
+          <span>Tax(6%)</span>
+          <span>RM <span id="taxAmount">0</span></span>
+        </div>
+        <div class="payment-row" id="deliveryRow">
+          <span>Delivery</span>
+          <span>RM <span id="deliveryFee">3</span></span>
+        </div>
+        <div class="payment-row total">
+          <span>Subtotal</span>
+          <span>RM <span id="subtotal">0</span></span>
+        </div>
+      </div>
+      <button class="checkout-btn" onclick="checkout()">Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    let isDelivery = true;
+
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartItemsDiv = document.getElementById('cart-items');
+      const emptyCartDiv = document.getElementById('empty-cart');
+      
+      cartItemsDiv.innerHTML = '';
+      
+      if (cart.length === 0) {
+        emptyCartDiv.style.display = 'block';
+        updatePrices();
+        return;
+      }
+      
+      emptyCartDiv.style.display = 'none';
+      
+      cart.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <div class="quantity-control">
+            <button class="quantity-btn" onclick="changeQuantity(${index}, -1)">-</button>
+            <div class="quantity-number">${item.quantity}</div>
+            <button class="quantity-btn" onclick="changeQuantity(${index}, 1)">+</button>
+          </div>
+          <img src="${item.img}" alt="${item.name}" class="food-image">
+          <div class="food-details">
+            <div class="food-name">${item.name}</div>
+            <div class="food-price">RM ${(item.price * item.quantity).toFixed(2)}</div>
+          </div>
+          <button class="remove-btn" onclick="removeItem(${index})">×</button>
+        `;
+        cartItemsDiv.appendChild(div);
+      });
+      
+      updatePrices();
+    }
+
+    function changeQuantity(index, change) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart[index]) {
+        cart[index].quantity += change;
+        if (cart[index].quantity <= 0) {
+          cart.splice(index, 1);
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+      }
+    }
+
+    function removeItem(index) {
+      if (confirm('Are you sure you want to remove this item from your cart?')) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+      }
+    }
+
+    function updatePrices() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+      const taxAmount = (cartTotal * 0.06).toFixed(2);
+      const deliveryFee = isDelivery ? 3 : 0;
+      const subtotal = (cartTotal + parseFloat(taxAmount) + deliveryFee).toFixed(2);
+      
+      document.getElementById('cartTotal').textContent = cartTotal.toFixed(2);
+      document.getElementById('taxAmount').textContent = taxAmount;
+      document.getElementById('deliveryFee').textContent = deliveryFee;
+      document.getElementById('subtotal').textContent = subtotal;
+      document.getElementById('deliveryRow').style.display = isDelivery ? '' : 'none';
+    }
+
+    function selectDelivery() {
+      isDelivery = true;
+      document.getElementById('deliveryBtn').classList.add('active');
+      document.getElementById('dineInBtn').classList.remove('active');
+      updatePrices();
+    }
+
+    function selectDineIn() {
+      isDelivery = false;
+      document.getElementById('deliveryBtn').classList.remove('active');
+      document.getElementById('dineInBtn').classList.add('active');
+      updatePrices();
+    }
+
+    function checkout() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      
+      const location = document.getElementById('locationField').value.trim();
+      if (isDelivery && !location) {
+        alert('Please enter your location before checking out.');
+        document.getElementById('locationField').focus();
+        return;
+      }
+      
+      const total = document.getElementById('subtotal').textContent;
+      alert(`Proceeding to checkout with total: RM ${total}\n${isDelivery ? 'Delivery Location: ' + location : 'Dine-in order'}`);
+      
+      // Redirect to checkout page
+      window.location.href = 'checkout.html';
+    }
+
+    // Initialize cart on page load
+    renderCart();
+  </script>
+</body>
+</html> 

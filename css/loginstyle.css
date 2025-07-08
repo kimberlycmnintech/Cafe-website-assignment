@@ -1,0 +1,305 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #102f76 0%, #102f76 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.auth-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 900px;
+    max-width: 90vw;
+    min-height: 600px;
+    display: flex;
+    backdrop-filter: blur(10px);
+}
+
+.auth-left {
+    flex: 1;
+    background: linear-gradient(45deg, rgba(16, 47, 118, 0.9), rgba(16, 47, 118, 0.9)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="coffee" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23coffee)"/></svg>');
+    color: white;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.logo {
+    font-size: 48px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.tagline {
+    font-size: 18px;
+    opacity: 0.9;
+    font-style: italic;
+    margin-bottom: 40px;
+}
+
+.coffee-cup {
+    width: 80px;
+    height: 80px;
+    margin: 20px 0;
+    opacity: 0.3;
+}
+
+.auth-right {
+    flex: 1;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.auth-toggle {
+    display: flex;
+    background: #f8f9fa;
+    border-radius: 50px;
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 15px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    color: #666;
+}
+
+.toggle-btn.active {
+    background: #102f76;
+    color: white;
+}
+
+.form-container {
+    position: relative;
+}
+
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    background: #fff;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #102f76;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 15px;
+    background: #102f76;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.auth-btn:hover {
+    background: #0a2355;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(16, 47, 118, 0.3);
+}
+
+.success-message {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background: #28a745;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: white;
+    font-size: 40px;
+}
+
+.welcome-text {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.welcome-subtext {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 35px;
+    line-height: 1.5;
+}
+
+.continue-btn {
+    background: #102f76;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.continue-btn:hover {
+    background: #0a2355;
+}
+
+
+input[type="email"], input[type="password"], input[type="text"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+
+@media screen and (max-width: 768px) {
+    .auth-container {
+        flex-direction: column;
+        width: 95vw;
+        max-width: 95vw;
+        height: auto;
+        min-height: 0;
+        max-height: 95vh;
+        overflow-y: auto;
+    }
+    
+    .auth-left {
+        padding: 30px 20px;
+        min-height: 180px;
+        flex-shrink: 0;
+    }
+    
+    .auth-right {
+        padding: 30px 20px;
+        flex: 1;
+    }
+    
+    .coffee-cup {
+        width: 60px;
+        height: 60px;
+        margin: 15px 0;
+    }
+    
+    .auth-left p {
+        font-size: 16px !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .auth-container {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        max-height: 100vh;
+    }
+    
+    .auth-left {
+        padding: 25px 15px;
+        min-height: 150px;
+    }
+    
+    .auth-right {
+        padding: 25px 15px;
+    }
+    
+    .form-group input {
+        padding: 12px 15px;
+        font-size: 16px; 
+    }
+}
+
+
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    .auth-container {
+        flex-direction: row;
+        height: 95vh;
+    }
+    
+    .auth-left {
+        padding: 20px;
+        min-height: auto;
+    }
+    
+    .coffee-cup {
+        width: 40px;
+        height: 40px;
+        margin: 10px 0;
+    }
+    
+    .auth-left p {
+        font-size: 14px !important;
+    }
+}

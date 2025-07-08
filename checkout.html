@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Out</title>
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+    <div class="checkout-container">
+        <div class="sidebar">
+            <div style="height: 24px;"></div>
+            <div class="back-arrow" onclick="window.location.href='cart.html'">&#8592;</div>
+            <div class="logo">
+                <img src="images/logo.png" alt="Solace Cafe Logo" />
+            </div>
+            <button class="place-order-btn">Place Order</button>
+        </div>
+        <div class="main-content">
+            <div class="checkout-title">Check Out</div>
+            <div id="order-summary" class="section-box" style="margin-bottom:24px;text-align:center;"></div>
+            <form class="section-box" id="billingForm" autocomplete="off">
+                <div class="section-title">Billing details</div>
+                <div class="form-group">
+                    <label class="form-label">First name <span class="required">*</span></label>
+                    <input type="text" class="form-input" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Last name <span class="required">*</span></label>
+                    <input type="text" class="form-input" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Mobile number <span class="required">*</span></label>
+                    <input type="tel" class="form-input" name="mobile" required pattern="[0-9]{10,15}">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email address <span class="required">*</span></label>
+                    <input type="email" class="form-input" name="email" required>
+                </div>
+            </form>
+            <div class="payment-section">
+                <div class="payment-title">How would you like to pay?</div>
+                <div class="payment-options">
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="cash" required>
+                        <span class="payment-label">Cash</span>
+                        <span class="payment-img">
+                            <img src="images/cash.png" alt="Cash" />
+                        </span>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="card">
+                        <span class="payment-label">Credit Card / Debit Card</span>
+                        <span class="payment-img">
+                            <img src="images/card.png" alt="Credit/Debit Card" />
+                        </span>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="onlinebanking">
+                        <span class="payment-label">Online Banking</span>
+                        <span class="payment-img">
+                            <img src="images/onlinebanking.png" alt="Online Banking" />
+                        </span>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="grabpay">
+                        <span class="payment-label">E-Wallet Grab Pay</span>
+                        <span class="payment-img">
+                            <img src="images/grabpay.png" alt="Grab Pay" />
+                        </span>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="tng">
+                        <span class="payment-label">E-Wallet Touch 'n Go</span>
+                        <span class="payment-img">
+                            <img src="images/tng.png" alt="Touch 'n Go" />
+                        </span>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="boost">
+                        <span class="payment-label">E-Wallet Boost</span>
+                        <span class="payment-img">
+                            <img src="images/boost.png" alt="Boost" />
+                        </span>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="shopee">
+                        <span class="payment-label">E-Wallet Shopee</span>
+                        <span class="payment-img">
+                            <img src="images/shopee.png" alt="Shopee" />
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Reservation</title>
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500&display=swap" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/reservation.css" />
+  <style>
+    .calendar-container {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+    
+    .calendar-input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e1e5e9;
+      border-radius: 8px;
+      font-size: 16px;
+      background: white;
+      cursor: pointer;
+      transition: border-color 0.3s;
+      box-sizing: border-box;
+    }
+    
+    .calendar-input:hover {
+      border-color: #3b5ba9;
+    }
+    
+    .calendar-input:focus {
+      outline: none;
+      border-color: #3b5ba9;
+    }
+    
+    .calendar-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 2px solid #e1e5e9;
+      border-radius: 8px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      display: none;
+      margin-top: 5px;
+      min-width: 280px;
+      width: 100%;
+      max-width: 320px;
+    }
+    
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 15px;
+      background: #3b5ba9;
+      color: white;
+      border-radius: 6px 6px 0 0;
+    }
+    
+    .calendar-nav {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 5px 8px;
+      border-radius: 4px;
+      transition: background 0.2s;
+      font-weight: bold;
+    }
+    
+    .calendar-nav:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .calendar-title {
+      font-weight: 600;
+      font-size: 14px;
+      text-align: center;
+      flex: 1;
+    }
+    
+    .calendar-grid {
+      padding: 12px;
+    }
+    
+    .calendar-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+      margin-bottom: 8px;
+    }
+    
+    .weekday {
+      text-align: center;
+      font-weight: 600;
+      color: #666;
+      font-size: 12px;
+      padding: 6px 0;
+    }
+    
+    .calendar-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+    }
+    
+    .calendar-day {
+      text-align: center;
+      padding: 8px 2px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.2s;
+      font-size: 13px;
+      min-height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .calendar-day:hover {
+      background: #f0f4ff;
+    }
+    
+    .calendar-day.selected {
+      background: #3b5ba9;
+      color: white;
+      font-weight: 600;
+    }
+    
+    .calendar-day.today {
+      background: #e8f2ff;
+      color: #3b5ba9;
+      font-weight: 600;
+      border: 2px solid #3b5ba9;
+    }
+    
+    .calendar-day.other-month {
+      color: #ccc;
+    }
+    
+    .calendar-day.disabled {
+      color: #ccc;
+      cursor: not-allowed;
+    }
+    
+    .calendar-day.disabled:hover {
+      background: none;
+    }
+    
+    .calendar-footer {
+      padding: 8px 12px;
+      border-top: 1px solid #e1e5e9;
+      text-align: center;
+    }
+    
+    .calendar-today-btn {
+      background: #3b5ba9;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: background 0.2s;
+    }
+    
+    .calendar-today-btn:hover {
+      background: #2a4a8a;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .calendar-dropdown {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 300px;
+        margin-top: 0;
+        z-index: 1001;
+      }
+      
+      .calendar-day {
+        padding: 10px 2px;
+        font-size: 14px;
+        min-height: 36px;
+      }
+      
+      .weekday {
+        font-size: 13px;
+        padding: 8px 0;
+      }
+      
+      .calendar-title {
+        font-size: 16px;
+      }
+    }
+    
+    /* Ensure calendar appears above other elements */
+    .calendar-dropdown {
+      z-index: 9999;
+    }
+    
+    /* Fix for select-group date to accommodate calendar */
+    .select-group.date {
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <div class="reservation-card">
+      <div class="back-arrow" onclick="window.location.href='index.html'">←</div>
+      <div class="header">
+        <h1 class="title">Online Reservation</h1>
+        <p class="subtitle">
+          Booking request +60112456438 or fill out the form below
+        </p>
+      </div>
+      <form id="reservationForm" class="form-container">
+        <div class="input-row">
+          <div class="input-group">
+            <label class="input-label" for="name">Your Name</label>
+            <input type="text" id="name" name="name" class="form-input" required />
+          </div>
+          <div class="input-group">
+            <label class="input-label" for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" class="form-input" required />
+          </div>
+        </div>
+        <div class="select-row">
+          <div class="select-group person">
+            <select id="persons" name="persons" class="form-select" required>
+              <option value="">Person</option>
+              <option value="1">1 Person</option>
+              <option value="2">2 Persons</option>
+              <option value="3">3 Persons</option>
+              <option value="4">4 Persons</option>
+              <option value="5">5 Persons</option>
+              <option value="6">6 Persons</option>
+              <option value="7">7 Persons</option>
+              <option value="8">8+ Persons</option>
+            </select>
+          </div>
+          <div class="select-group date">
+            <div class="calendar-container">
+              <input type="text" id="date" name="date" class="calendar-input" placeholder="Select Date" readonly required />
+              <div class="calendar-dropdown" id="calendarDropdown">
+                <div class="calendar-header">
+                  <button type="button" class="calendar-nav" id="prevMonth">‹</button>
+                  <div class="calendar-title" id="calendarTitle">January 2024</div>
+                  <button type="button" class="calendar-nav" id="nextMonth">›</button>
+                </div>
+                <div class="calendar-grid">
+                  <div class="calendar-weekdays">
+                    <div class="weekday">Sun</div>
+                    <div class="weekday">Mon</div>
+                    <div class="weekday">Tue</div>
+                    <div class="weekday">Wed</div>
+                    <div class="weekday">Thu</div>
+                    <div class="weekday">Fri</div>
+                    <div class="weekday">Sat</div>
+                  </div>
+                  <div class="calendar-days" id="calendarDays"></div>
+                </div>
+                <div class="calendar-footer">
+                  <button type="button" class="calendar-today-btn" id="todayBtn">Today</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="select-group time">
+            <select id="time" name="time" class="form-select" required>
+              <option value="">Time</option>
+              <option value="10:00">10:00 AM</option>
+              <option value="10:30">10:30 AM</option>
+              <option value="11:00">11:00 AM</option>
+              <option value="11:30">11:30 AM</option>
+              <option value="12:00">12:00 PM</option>
+              <option value="12:30">12:30 PM</option>
+              <option value="13:00">1:00 PM</option>
+              <option value="13:30">1:30 PM</option>
+              <option value="14:00">2:00 PM</option>
+              <option value="14:30">2:30 PM</option>
+              <option value="15:00">3:00 PM</option>
+              <option value="15:30">3:30 PM</option>
+              <option value="16:00">4:00 PM</option>
+              <option value="16:30">4:30 PM</option>
+              <option value="17:00">5:00 PM</option>
+              <option value="17:30">5:30 PM</option>
+              <option value="18:00">6:00 PM</option>
+              <option value="18:30">6:30 PM</option>
+              <option value="19:00">7:00 PM</option>
+              <option value="19:30">7:30 PM</option>
+              <option value="20:00">8:00 PM</option>
+              <option value="20:30">8:30 PM</option>
+              <option value="21:00">9:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="book-button">Book a table</button>
+      </form>
+      <div id="successMessage" class="success-message">
+        ✓ Reservation submitted successfully! We'll contact you shortly to confirm.
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/reservation.js"></script>
+</body>
+</html>

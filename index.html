@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solace Cafe</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/logoweb.png" alt="Solace Cafe Logo" class="logo-img">
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About us</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#contact">Contact</a></li>
+     <li><a href="team.html">Our team</a></li>
+
+    </ul>
+    <div class="nav-icons">
+      <a href="login.html"><i class="fa-solid fa-user"></i></a>
+      <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="images/logo.png" alt="Solace Cafe Logo" class="hero-logo">
+      <p>where coffee meets comfort</p>
+      <a href="#menu" class="btn">Order now</a>
+    </div>
+    <img src="images/cafeinterior.jpg" alt="Cafe interior" class="hero-bg">
+  </section>
+
+  <!-- About Us Section -->
+  <section class="about" id="about">
+    <div class="about-row custom-about-row">
+      <div class="about-header custom-about-header">
+        <div class="about-title-line custom-about-title-line">
+          <span class="about-title custom-about-title">
+            About us
+          </span>
+        </div>
+        <p class="custom-about-desc">At Solace Café, we believe that great coffee is more than just a beverage—it's a moment of comfort, a pause in your day, and a connection to something meaningful.</p>
+      </div>
+      <a href="reservation.html" class="btn btn-reservation custom-reservation-btn">Reservation</a>
+    </div>
+    <div class="about-cards custom-about-cards">
+      <div class="about-card custom-about-card">
+        <div class="custom-img-border">
+          <img src="images/latte.jpg" alt="Latte art">
+        </div>
+        <p>Latte art that speaks volumes</p>
+      </div>
+      <div class="about-card custom-about-card">
+        <div class="custom-img-border">
+          <img src="images/cozyenvironment.jpg" alt="Cozy environment">
+        </div>
+        <p>Cozy environment</p>
+      </div>
+      <div class="about-card custom-about-card">
+        <div class="custom-img-border">
+          <img src="images/brewed.jpg" alt="Expertly brewed">
+        </div>
+        <p>Expertly brewed by trained hands</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Preview Section -->
+  <section class="menu-preview" id="menu">
+    <h2>Menu</h2>
+    <div class="menu-tabs">
+      <button class="tab active" data-category="pasta">Pasta</button>
+      <button class="tab" data-category="asian">Asian</button>
+      <button class="tab" data-category="pastries">Pastries</button>
+      <button class="tab" data-category="sides">Sides</button>
+      <button class="tab" data-category="drinks">Drinks</button>
+    </div>
+    <div class="drinks-subtabs" style="display:none;">
+      <button class="subtab active" data-subcategory="coffee">Coffee</button>
+      <button class="subtab" data-subcategory="non-coffee">Non-Coffee</button>
+    </div>
+    <div class="menu-slider">
+      <button class="menu-arrow left">&lt;</button>
+      <div class="menu-items" data-category="pasta" style="display:flex;">
+        <!-- Example menu item -->
+        <div class="menu-item">
+          <img src="images/Neapolitan penne.png" alt="Neapolitan penne">
+          <div class="item-info">
+            <h3>Neapolitan penne</h3>
+            <p>RM 19</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/truffle penne.png" alt="Truffle penne">
+          <div class="item-info">
+            <h3>Truffle penne</h3>
+            <p>RM 23</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/seafood.png" alt="Seafood Agilo Olio">
+          <div class="item-info">
+            <h3>Seafood Agilo Olio</h3>
+            <p>RM 25</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/sc.png" alt="Spaghetti Carbonara">
+          <div class="item-info">
+            <h3>Spaghetti Carbonara</h3>
+            <p>RM 21</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/fa.jpg" alt="Fettuccine Alfredo">
+          <div class="item-info">
+            <h3>Fettuccine Alfredo</h3>
+            <p>RM 22</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+      </div>
+      <button class="menu-arrow right">&gt;</button>
+    </div>
+    <div class="menu-slider" style="display:none;">
+      <button class="menu-arrow left">&lt;</button>
+      <div class="menu-items" data-category="asian" style="display:none;">
+        <div class="menu-item">
+          <img src="images/nasi lemak.png" alt="Nasi Lemak">
+          <div class="item-info">
+            <h3>Nasi Lemak</h3>
+            <p>RM 15</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/chicken rice.jpg" alt="Chicken Rice">
+          <div class="item-info">
+            <h3>Chicken Rice</h3>
+            <p>RM 14</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/tamago don.png" alt="Tamago Don">
+          <div class="item-info">
+            <h3>Tamago Don</h3>
+            <p>RM 16</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+      </div>
+      <button class="menu-arrow right">&gt;</button>
+    </div>
+    <div class="menu-slider" style="display:none;">
+      <button class="menu-arrow left">&lt;</button>
+      <div class="menu-items" data-category="pastries" style="display:none;">
+        <div class="menu-item">
+          <img src="images/croissant.png" alt="Croissant">
+          <div class="item-info">
+            <h3>Croissant</h3>
+            <p>RM 8</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/blueberrymuffin.jpg" alt="Blueberry Muffin">
+          <div class="item-info">
+            <h3>Blueberry Muffin</h3>
+            <p>RM 5</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/cheesecake1.jpg" alt="Cheesecake">
+          <div class="item-info">
+            <h3>Cheesecake</h3>
+            <p>RM 10</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+      </div>
+      <button class="menu-arrow right">&gt;</button>
+    </div>
+    <div class="menu-slider" style="display:none;">
+      <button class="menu-arrow left">&lt;</button>
+      <div class="menu-items" data-category="sides" style="display:none;">
+        <div class="menu-item">
+          <img src="images/garlicbread.jpg" alt="Garlic Bread">
+          <div class="item-info">
+            <h3>Garlic Bread</h3>
+            <p>RM 5</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/frenchfries.jpg" alt="French Fries">
+          <div class="item-info">
+            <h3>French Fries</h3>
+            <p>RM 7</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/salad.png" alt="Salad">
+          <div class="item-info">
+            <h3>Salad</h3>
+            <p>RM 9</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+      </div>
+      <button class="menu-arrow right">&gt;</button>
+    </div>
+    <div class="menu-slider" style="display:none;">
+      <button class="menu-arrow left">&lt;</button>
+      <div class="menu-items" data-category="coffee" style="display:none;">
+        <div class="menu-item">
+          <img src="images/latte.jpg" alt="Latte">
+          <div class="item-info">
+            <h3>Latte</h3>
+            <p>RM 10</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/cup.jpg" alt="Cappuccino">
+          <div class="item-info">
+            <h3>Cappuccino</h3>
+            <p>RM 11</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/matcha latte.jpg" alt="Matcha Latte">
+          <div class="item-info">
+            <h3>Matcha Latte</h3>
+            <p>RM 12</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+      </div>
+      <button class="menu-arrow right">&gt;</button>
+    </div>
+    <div class="menu-slider" style="display:none;">
+      <button class="menu-arrow left">&lt;</button>
+      <div class="menu-items" data-category="non-coffee" style="display:none;">
+        <div class="menu-item">
+          <img src="images/ice tea.jpg" alt="Iced Tea">
+          <div class="item-info">
+            <h3>Iced Tea</h3>
+            <p>RM 8</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+          <img src="images/orange juice.jpg" alt="Orange Juice">
+          <div class="item-info">
+            <h3>Orange Juice</h3>
+            <p>RM 9</p>
+          </div>
+          <div class="quantity-selector" style="display:flex;justify-content:center;align-items:center;margin-bottom:12px;">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart" style="display:block;margin:0 auto;margin-top:10px;">Add to Cart</button>
+        </div>
+      </div>
+      <button class="menu-arrow right">&gt;</button>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="contact-form">
+      <h2>Get in touch</h2>
+      <p>We would love to hear your feedback!</p>
+      <form id="feedback-form">
+        <input type="text" placeholder="Your name" required>
+        <input type="email" placeholder="Your email" required>
+        <textarea placeholder="Send us your message..." required></textarea>
+        <button type="submit" class="btn">Send</button>
+      </form>
+      <div id="contact-success" class="contact-success-message" style="display:none;">Thank you for your feedback! We have received your message.</div>
+    </div>
+    <div class="contact-info">
+      <h2>Contact us</h2>
+      <p><i class="fa-solid fa-envelope"></i> solacecafe@gmail.com</p>
+      <p><i class="fa-solid fa-phone"></i> 0112456438</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-main">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="Solace Cafe Logo">
+      </div>
+      <div class="footer-info">
+        <div>
+          <h4>Opening hours</h4>
+          <p>Opens everyday<br>Mon - Sun : 10am - 9pm</p>
+        </div>
+        <div>
+          <h4>Location</h4>
+          <p>39, 39A & 41, Jln Sahabat, Bukit Bintang,<br>50200 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur</p>
+        </div>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/p/Solace-Bukit-Bintang-100094169354292/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/solace.bb/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/60125571470" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Copyright © 2025 | All rights reserved by Deux Gardens Sdn.Bhd.</p>
+    </div>
+  </footer>
+  <!-- Scroll to top button -->
+  <button id="scrollToTop" class="scroll-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+  
+  <script src="js/main.js"></script>
+</body>
+</html> 
